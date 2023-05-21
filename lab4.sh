@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [ "$1" == "--date" ]; then
+if [[ "$1" == "--date" || "$1" == "-date" ]]; then
     current_date=$(date)
     echo "Aktualna data: $current_date"
 fi
 
-if [ "$1" == "--logs" ]; then
+if [ ["$1" == "--logs" || "$1" == "-logs"] ]; then
     for ((i=1; i<=100; i++))
     do
         filename="log$i.txt"
@@ -18,7 +18,7 @@ else
     echo "nienzana flaga!"
 fi
 
-if [ "$1" == "--logs" ]; then
+if [ ["$1" == "--logs" || "$1" == "-logs"] ]; then
     if [ -z "$2" ]; then
         echo "Podaj liczbę plików do utworzenia."
     else
@@ -36,7 +36,7 @@ else
     echo "Użyj --logs + liczba, aby utworzyć określoną liczbę logów."
 fi
 
-if [ "$1" == "--help" ]; then
+if [ ["$1" == "--help" || "$1" == "-help"] ]; then
     echo "Dostępne opcje:"
     echo "--logs + liczba: Tworzy określona liczbę plikow log z infosdacjami."
     echo "--help: Wyświetla dostępne opcje."
