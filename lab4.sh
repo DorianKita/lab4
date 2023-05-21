@@ -35,3 +35,11 @@ if [ "$1" == "--logs" ]; then
 else
     echo "Użyj --logs + liczba, aby utworzyć określoną liczbę logów."
 fi
+
+if [ "$1" == "--help" ]; then
+    echo "Dostępne opcje:"
+    echo "--logs + liczba: Tworzy określona liczbę plikow log z infosdacjami."
+    echo "--help: Wyświetla dostępne opcje."
+else
+    echo "Użyj --help aby zobaczyc dostępne opcja."
+fi
