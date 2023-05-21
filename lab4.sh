@@ -43,3 +43,15 @@ if [ ["$1" == "--help" || "$1" == "-help"] ]; then
 else
     echo "Użyj --help aby zobaczyc dostępne opcja."
 fi
+
+#!/bin/bash
+
+if [ "$1" == "--init" ]; then
+    git clone https://github.com/DorianKita/lab4.git
+    repo=$(basename -s .git lab4.git)
+    export PATH="$PATH:$(pwd)/$repo"
+    echo "Repozytorium zostało pomyślnie sklonowane do katalogu $(pwd)/$repo"
+    echo "Ścieżka daodana do zmiennej środowiskowej PATH"
+else
+    echo "Użyj --init,  aby sklonować repozytorium i dodać do PATH."
+fi
