@@ -44,7 +44,7 @@ else
     echo "Użyj --help aby zobaczyc dostępne opcja."
 fi
 
-#!/bin/bash
+
 
 if [ "$1" == "--init" ]; then
     git clone https://github.com/DorianKita/lab4.git
@@ -54,4 +54,35 @@ if [ "$1" == "--init" ]; then
     echo "Ścieżka daodana do zmiennej środowiskowej PATH"
 else
     echo "Użyj --init,  aby sklonować repozytorium i dodać do PATH."
+fi
+
+
+
+if [ "$1" == "--init" ]; then
+   
+    git clone https://github.com/DorianKita/lab4.git
+
+    repo_name=$(basename -s .git lab4.git)
+    export PATH="$PATH:$(pwd)/$repo_name"
+
+    echo "Repozytorium zostało pomyślnie sklonowane do katalogu $(pwd)/$repo_name"
+    echo "Ścieżka została dodana do zmiennej środowiskowej PATH"
+elif [[ "$1" == "--error" || "$1" == "-e" ]]; then
+    if [ -z "$2" ]; then
+        num_errors=100
+    else
+        num_errors=$2
+    fi
+
+    for ((i=1; i<=num_errors; i++))
+    do
+        error_dir="error$i"
+        error_file="$error_dir/error$i.txt"
+        mkdir -p "$error_dir"
+        echo "Error $i" > "$error_file"
+    done
+
+    echo "Utworzono $num_errors plików error"
+else
+    echo "Użyj --init, --error +liczba lub -e + liczab, aby użyć odpowiedniej funkcjonalności."
 fi
